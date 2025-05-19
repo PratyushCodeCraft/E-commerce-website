@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Signup | Your Furniture Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="login-container">
+    <h2><b>Signup</b></h2>
+    <form id="signupForm">
+      <input type="text" id="username" placeholder="Create a username" required><br>
+      <input type="password" id="password" placeholder="Create a password" required><br>
+      <button type="submit">Signup</button>
+    </form>
+    <p id="signup-message"></p>
+  </div>
+
+  <script>
+  document.getElementById('signupForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    // Get old users from localStorage
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+
+    // Check if username already exists
+    const userExists = users.find(user => user.username === username);
+
+    if (userExists) {
+      document.getElementById('signup-message').textContent = 'Username already exists!';
+      document.getElementById('signup-message').style.color = 'red';
+    } else {
+      // Add new user
+      users.push({ username, password });
+      localStorage.setItem('users', JSON.stringify(users));
+
+      document.getElementById('signup-message').textContent = 'Signup successful! You can login now.';
+      document.getElementById('signup-message').style.color = 'green';
+
+      // Redirect to login
+      setTimeout(() => {
+        window.location.href = 'login.html';
+      }, 1500);
+    }
+  });
+</script>
+
+
+</body>
+</html>

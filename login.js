@@ -1,14 +1,21 @@
 document.getElementById('loginForm').addEventListener('submit', function(e) {
   e.preventDefault();
 
-  const user = document.getElementById('username').value;
-  const pass = document.getElementById('password').value;
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
 
-  // Simple login credentials
-  if (user === 'admin' && pass === '12345') {
+  // Get all registered users
+  const users = JSON.parse(localStorage.getItem('users')) || [];
+
+  // Check if user exists and password matches
+  const validUser = users.find(user => user.username === username && user.password === password);
+
+  if (validUser) {
     alert('Login successful!');
-    window.location.href = 'index.html'; // user ko homepage pe le jao
+    window.location.href = 'index.html'; // Redirect to homepage
   } else {
-    document.getElementById('error-message').innerText = 'Invalid username or password.';
+    const errorMessage = document.getElementById('error-message');
+    errorMessage.textContent = 'Invalid username or password';
+    errorMessage.style.color = 'red';
   }
 });
