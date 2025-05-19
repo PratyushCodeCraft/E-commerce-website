@@ -841,4 +841,56 @@ body#checkout-page #site-info {
 
     
 
+/* Login form styling */
+.login-container {
+  max-width: 300px;
+  margin: 80px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+  text-align: center;
+}
 
+.login-container input {
+  width: 90%;
+  margin: 10px 0;
+  padding: 8px;
+}
+
+.login-container button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+
+/* logon styling */
+nav {
+  background-color: #333;
+  padding: 10px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+
+nav ul li a:hover {
+  background-color: #555;
+  border-radius: 5px;
+}
